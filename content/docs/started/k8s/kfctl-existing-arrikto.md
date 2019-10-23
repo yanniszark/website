@@ -22,7 +22,7 @@ Read the relevant [article](https://journal.arrikto.com/kubeflow-authentication-
 
 ## Before you start
 
-* Existing Kubernetes Cluster.
+The instructions below assume that you have an existing Kubernetes cluster.
 
 <a id="prepare-environment"></a>
 ## Prepare your environment
@@ -62,6 +62,8 @@ export BASE_DIR=<path to a base directory>
 export KF_DIR=${BASE_DIR}/${KF_NAME}
 
 # Credentials for the default user are admin@kubeflow.org:12341234
+# To change them, please edit the dex-auth application parameters
+# inside the KfDef file.
 ```
 Notes:
 
@@ -691,7 +693,7 @@ metadata:
   namespace: istio-system
 spec:
   commonName: istio-ingressgateway.istio-system.svc
-  # Use ipAdresses if your LoadBalancer issues an IP
+  # Use ipAddresses if your LoadBalancer issues an IP
   ipAddresses:
   - <LoadBalancer IP>
   # Use dnsNames if your LoadBalancer issues a hostname (eg on AWS)
@@ -707,7 +709,7 @@ spec:
 After applying the above Certificate, cert-manager will generate the TLS certificate inside the istio-ingressgateway-certs secrets.
 The istio-ingressgateway-certs secret is mounted on the istio-ingressgateway deployment and used to serve HTTPS.
 
-Navigate to `https://<LoadBalancer Adress>/` and start using Kubeflow.
+Navigate to `https://<LoadBalancer Address>/` and start using Kubeflow.
 
 ### Troubleshooting
 
